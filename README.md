@@ -77,7 +77,7 @@ Since the folder allows drag and drop uploads of any file type including php, we
 	- no encoding need be specified: -e 
 
 ##### Burp access. 
-![msfpayload](msfburppayload.png)
+![msfpayload](images/Project_Images/Shells/msfburppayload.png)
 
 The other ways of obtaining a shell is to use burpsuite. 
 
