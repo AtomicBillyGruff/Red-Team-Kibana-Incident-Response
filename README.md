@@ -1,4 +1,4 @@
-# Red-Team vs Blue-Team Perspectives & Incident Response
+# Red-Team vs Blue-Team Perspectives
 Elk vs Kali: 
 
 
