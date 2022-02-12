@@ -1,4 +1,4 @@
-# Red Team KALI | Blue Team ELASTICSEARCH
+# Red Team KALI VS. Blue Team ELASTICSEARCH
 Elk vs Kali: 
 
 
