@@ -90,7 +90,7 @@ The other ways of obtaining a shell is to use burpsuite.
 - we will be using the PUT method. 
 - After authorization and additional header will be added: Authorization: Basic cnlbijsaW51eDRI
 
-![upload_complete](upload_complete.png)
+![upload_complete](images/Project_Images/Shells/upload_complete.png)
 
 	# msfconsole
 	> use exploit/multi/handler
@@ -143,7 +143,7 @@ An alert can be made by querying out network `packets: 2` as default nmap SYN sc
 
 
 ##### Uncovering the Brute Force Attack @01:48:47.748
-![hydra](onlyhydrahost.png)
+![hydra](images/Project_Images/Hydra/day3/onlyhydrahost.png)
 
 #### Search for this brute force attack
 
