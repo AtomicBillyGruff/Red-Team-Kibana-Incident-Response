@@ -1,4 +1,4 @@
-# Red Team Kali Kibana Incident Response
+# Red-Team vs Blue-Team Perspectives & Incident Response
 Elk vs Kali: 
 
 
