@@ -171,7 +171,7 @@ An alert can be made by querying out network `packets: 2` as default nmap SYN sc
 
 > Mitigating this attack would be to configure access in the webDav for Administrative access to upload files via PUT request and also not allow the forgery of the filetype.
 
-- After this migitation payloads may need to be encoded and named in different formats. It is HTTP/1.1 after all.
+- After this migitation payloads may need to be encoded and named in different formats. It is HTTP/1.1 after all with no anti-virus within this shared folder.
 
 # Mitigation Strategies 
 
