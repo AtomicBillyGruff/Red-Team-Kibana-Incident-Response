@@ -239,7 +239,7 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 ##### Detecting the WebDAV Connection 
 	- LAN access only on differing levels. 
 	
-	- Substring searches in the fileshare that contain WebDAV related keywords
+	- Substring searches in the fileshare that contain WebDAV related keywords.
 	
 	- Changing the webdav directory name > dav://192.168.1.90/______ so dirb cannot find it within its default wordlist. 
 	
