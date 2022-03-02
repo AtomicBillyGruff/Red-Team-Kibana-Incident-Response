@@ -255,7 +255,6 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 	
 > msfvenom may then require encoding and architecture specification
 
-	- Be on the look out for RCE vulnerabilities such as Log4shell that targets apache servers using log4j service and patch its use (update).
 	
 	
 	
