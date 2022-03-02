@@ -251,9 +251,10 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 
 ##### Reverse Upload Shells 
 	- Disallow php files that can be read by apache. 
-	- upgrade http/1.1 so filenames can't be spoofed.
+	- Create Alerts for Filesizes 
+	- Alert For CPU usage
 	
-> msfvenom may then require encoding and architecture specification
+msfvenom may then require encoding and architecture specification increasing filesizes of the payload
 
 	
 	
