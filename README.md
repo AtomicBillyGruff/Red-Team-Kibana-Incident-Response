@@ -254,7 +254,7 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 	- Create Alerts for Filesizes 
 	- Alert For CPU usage
 	
-msfvenom may then require encoding and architecture specification increasing filesizes of the payload
+> msfvenom may then require encoding and architecture specification increasing filesizes of the payload
 
 	
 	
