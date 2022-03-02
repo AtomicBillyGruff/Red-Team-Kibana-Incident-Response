@@ -167,7 +167,7 @@ An alert can be made by querying out network `packets: 2` as default nmap SYN sc
 - Files requested were shells in php format.
 ###### Alarms: 
 - Set for ip addresses called to as the foreign destination address
-- Format php alarm. 
+- Format php execution alarm & create no execution policy for the webdav user. 
 
 > Mitigating this attack would be to configure access in the webDav for Administrative access to upload files via PUT request and also not allow the forgery of the filetype.
 
@@ -227,8 +227,6 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 	-	Configure the webdav with the firewall. 
 	
 	-   CSRF tokens since this is over http and providing access control for loggins and sessions.
-	
-	-   Utilizing Cryptography.
 
 > Hydra by default does not support csrf attacks
 
