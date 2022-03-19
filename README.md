@@ -19,12 +19,8 @@ Elk vs Kali:
 3. Blue Team Elk Analysis
 4. Mitigation Strategies
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
  > Attacks are NOT PERMITTED to use directly in the azure network. The following experiment is virtualized & local. 
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 
 ### Red Team Security Assessment
 We will later detect all attacks from the blue team perspective and create baselines and thresholds for alerts based upon these attacks.
@@ -60,14 +56,9 @@ Credentials allow access into the folder where instructions are left behind by t
 	# Dirb scan to find hidden folders within the hidden folder
 	> dirb http://192.168.1.105/company_folders/secret_folder
 	> dirb http://192.168.1.105/webdav 
-	
-	Nothing found running dirb again but worth it to try.
-
 
 ##### Supported filetypes in php in the local shared webdav folder 
 ![Network Diagram Image](images/davfolder.png)
-
-Here you can see the webdav can be accessed by ways: over http using burp or by searching in your local filesystem by making a call to dav://192.168.1.105/webdav and using ryans credentials.
 
 Since the folder allows drag and drop uploads of any file type including php, we are able to quickly upload a staged reverse shell. 
 	
@@ -87,7 +78,7 @@ The other ways of obtaining a shell is to use burpsuite.
 	
 	ALLOWs: GET, POST, DELETE, PROPFIND, MOVE, PUT, LOCK, UNLOCK
 	
-- we will be using the PUT method. 
+- using the PUT method. 
 - After authorization and additional header will be added: Authorization: Basic cnlbijsaW51eDRI
 
 ![upload_complete](images/Project_Images/Shells/upload_complete.png)
@@ -108,7 +99,6 @@ The other ways of obtaining a shell is to use burpsuite.
 	> getpid
 	Current pid: 1365
 	
-
 -------------
 
 ## Blue Team Assessment
@@ -116,10 +106,9 @@ The other ways of obtaining a shell is to use burpsuite.
 ##### Identifying the Port Scan @01:07:40.004
 	> source.ip: 192.168.1.90 and destination.ip: 192.168.1.105 
 	
-
 ![syn-scan](images/Project_Images/Nmap-Scan/portscan_1.png)
 
-	- 916.424 hits total occurrances
+	- 916.424 total occurrances
 	
 	add > and network.packets: 2
 	
@@ -132,15 +121,12 @@ An alert can be made by querying out network `packets: 2` as default nmap SYN sc
 ##### Finding the Request for the Hidden Directory @01:50.14
 ![dir](images/Project_Images/secret-folder/access-to-folders.png)
 
-
 	# Secret Folder accessed 51038 times due to dirb and ffuf  
 	> source.ip: 192.168.1.90 and destination.ip: 192.168.1.105 and url.path: /company_folders/secret_folder/*
 	
 - Aside from the hydra http-get attack also, some human written forensic information was uncovered after  finding `ryans hash`, which was found to be `linux4u` and the location
 
-
 - This alert triggers for new hosts connected and hosts not approved & pre-configured. 
-
 
 ##### Uncovering the Brute Force Attack @01:48:47.748
 ![hydra](images/Project_Images/Hydra/day3/onlyhydrahost.png)
@@ -152,10 +138,8 @@ An alert can be made by querying out network `packets: 2` as default nmap SYN sc
 
 > This hydra attack does not mask locations or hostnames and is easy to tell from all the ERROR status. 
 
-
 ###### This Hydra attack occurs very fast and is not a stealthy attack with a baseline of over 200 requests per second and 11000 per minute
 ![hydra-baseline](images/day_5/day_6/brute_force_baselines.png)
-
 
 ##### Finding the WebDAV Connection @02:31:29.518
 ![webdav](images/Project_Images/webdav/day3/not-good.png)
@@ -171,7 +155,7 @@ An alert can be made by querying out network `packets: 2` as default nmap SYN sc
 
 > Mitigating this attack would be to configure access in the webDav for Administrative access to upload files via PUT request and also not allow the forgery of the filetype.
 
-- After this migitation payloads may need to be encoded and named in different formats. It is HTTP/1.1 after all with no anti-virus within this shared folder.
+- After this migitation payloads may need to be encoded and named in different formats. It is HTTP/1.1 with no anti-virus within this shared folder.
 
 # Mitigation Strategies 
 
@@ -193,7 +177,7 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 
 	# Other Mitigations
 	- honeypots sending hackers to empty hosts. 
-	- change port numbers to non-standard ports. example: 22 -> 2245
+	- change port numbers to non-standard ports. example: 22 -> 2245 (This is not a solution but a means of obsurity)
 
 	- XMAs scans alerts would be set for minutes and even seconds. 
 	
@@ -239,20 +223,15 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 	
 	- Substring searches in the fileshare that contain WebDAV related keywords.
 	
-	- Changing the webdav directory name > dav://192.168.1.90/______ so dirb cannot find it within its default wordlist. 
+	- Changing the webdav directory name > dav://192.168.1.90/______ so dirb cannot find it within its default wordlist (This is not a solution but a means of obsurity). 
 	
 	- LAN static configuratiions and checks on the filesystems, making sure mac address remain the same.
 	
-	- PUT commands should be available to Administrators only and not managers. 
-	
-	- Cryptography and these connections to the fileshare would be good if 256bit keys match and open for about 30 minutes for uploading of files in general. 
-
 ##### Reverse Upload Shells 
 	- Disallow php files that can be read by apache. 
-	- Create Alerts for Filesizes 
+	- Create Alerts for Filesizes
 	- Alert For CPU usage
 	
-> msfvenom may then require encoding and architecture specification increasing filesizes of the payload
 
 	
 	
