@@ -17,10 +17,7 @@ Elk vs Kali:
 1. Recon Capstone VM (DVWA) in a local environment
 2. Attacking & Enumerations VM 
 3. Blue Team Elk Analysis
-4. Mitigation Strategies
-
-
- > Attacks are NOT PERMITTED to use directly in the azure network. The following experiment is virtualized & local. 
+4. Mitigation Strategies 
 
 ### Red Team Security Assessment
 We will later detect all attacks from the blue team perspective and create baselines and thresholds for alerts based upon these attacks.
@@ -174,49 +171,6 @@ Block icmp ping sweeps from detecting and accepting the configuration of allowed
 	- Ack scans XMAS 
 	- location bounce
 	- sweep scan 
-
-	# Other Mitigations
-	- honeypots sending hackers to empty hosts. 
-	- change port numbers to non-standard ports. example: 22 -> 2245 (This is not a solution but a means of obsurity)
-
-	- XMAs scans alerts would be set for minutes and even seconds. 
-	
-	- Stealthier scans will take longer to collect, but as the hosts sends more packets, over time it will be detected that they are doing a port scan by scanning stealthily 8 ports. 
-	
-	- Blocking public icmp scans helps and filtering helps but by default, nmap only sends a SYN, making it easier to detect in an IDS and especially for a firewall or IPS for that matter. 
-
-##### Finding the Request for the hidden directory 
-	- Firewall access in LAN only since it is a fileshare
-	
-	- configurations in the firewall will do the trick. UFW uncomplicated firewall on the host machines and IPS on the network. 
-	
-	- only certain users should have the secret_directory available in the first place. It should not be accessable or indexed without authentication first. 
-
-	- In this local fileshare scenerio, port 80 has no need of being accesssable from outside the netork. 
-	
-	- Could fall under Broken Access Control as this constitutes as access to an admin panel. 
-	
-	> Mitigations
-		- Tokens
-		- Another layer of login
-		- Denying public access
-		- check for webroots
-		- Proper access controls
-		
-		** > ufw deny all incoming
-		 - allow only incoming connection for port 80 in this case. 
-		
-
-##### Preventing Brute Force Attacks 
-	-	Configure the webdav with the firewall. 
-	
-	-   CSRF tokens since this is over http and providing access control for loggins and sessions.
-
-> Hydra by default does not support csrf attacks
-
-	- Multi authentication.
-	- Lockout for failed attempts.
-	- Alerts if correct usernames and passwords were used. 
 
 ##### Detecting the WebDAV Connection 
 	- LAN access only on differing levels. 
